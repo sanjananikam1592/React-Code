@@ -1,32 +1,64 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from "react"
 
 function App() {
 
-  const[count, setcount] = useState(11)
+  // step 1 : Loading the home feed at first
+  const[currentTab, setCurrentTab] = useState("Home")
   
-  //Bussiness logic
 
-useEffect(()=>{
+  // useEffect hook
 
-  //callback function - any operation you have to perform
+  useEffect(()=>{
 
-  /*console.log("Hello from Vscode")
-  console.log("Hello from Vscode2");
-   console.log("Hello from Vscode3");
-*/
-console.log("Re-render because count is changed " +count)
+    console.log("Current tab on the page is : " +currentTab)
+  
+  },[currentTab])
 
-},[count])
+  //step 2 : create the function
 
-//UI
+  //Home
+  function HomeFunction() {
+
+    setCurrentTab("Home")
+  
+  }
+
+  //MyNetwork
+  function NetworkFunction() {
+
+    setCurrentTab("MyNetwork")
+  }
+
+//Jobs
+function JobFunction(){
+
+  setCurrentTab("Jobs")
+}
+
+//Messaging
+function MessageFunction(){
+  
+  setCurrentTab("Messaging")
+}
+
+//Notifications
+function NotificationFunction(){
+  setCurrentTab("Notifications")
+
+}
 
   return (
     <div>
-      <h1>useEffect Hooks in ReactJS</h1>
-      <h3>heyy</h3>
-      <h2>Count : {count } </h2>
-    </div>
+      <h1>Linkedin Navbar</h1>
+      
+      <button onClick ={HomeFunction}style ={{color : currentTab=="Home" ? "red" :"gray"}}>Home</button>
+      <button onClick ={NetworkFunction} style ={{color: currentTab=="MyNetwork" ? "red" : "gray"}}>MyNetwork</button>
+      <button onClick ={JobFunction}style ={{color : currentTab=="Jobs" ? "red" : "gray"}}>Jobs</button>
+      <button onClick ={MessageFunction}style ={{color : currentTab=="Messaging" ? "red" : "gray"}}>Messaging</button>
+      <button onClick={NotificationFunction}style ={{color:currentTab=="Notifications" ? "red" : "gray"}}>Notifications</button>
+      
+      </div>
   )
 }
 
-export default App;
+export default App
