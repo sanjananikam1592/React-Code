@@ -1,104 +1,32 @@
-// import React, { useEffect, useState } from 'react'
-
-// function App() {
-
-
-// // step 1 - Defining the states 
-
-// const[loading, setLoading] = useState(true)
-// const [data, setData] = useState("")
-// const[error,setError] = useState(null) 
-
-// // Step 2 - Business logic (actually calling the API)
-
-// useEffect(()=>{
-
-//   fetch("https://api.github.com/users/sanjananikam1592")
-// .then(response => response.json())
-// .then((finalData)=>{
-
-// setData(finalData)
-// setLoading(false)
-
-// } ).catch((error)=> {
-
-// console.log("Error while fetching");
-// setError(error.message)
-// setLoading(false)
-
-
-// })
-
-
-// },[]) // Empty dependency array - run atleast once 
-
-
-
-// // Step 3 - UI Part 
-
-// if(loading) return <p> Loading Please wait ... </p>
-// if(error) return  <p> something went wrong </p>
-
-
-
-//   return (
-//     <div>
-
-// <h1>Data fetching using React - Promises </h1>
-
-// <h3>Login : {data.login }</h3>
-// <h3>id : {data.id }</h3>
-// <h3>url :{data.url}</h3>
-
-//     </div>
-//   );
-// }
-
-// export default App
-
-//Async await approach
-
 import React, { useEffect, useState } from 'react'
 
 function App() {
-  //Business logic
 
-  //step1 : Defining the states
-
-  const[post, setPosts] = useState([]) //array of objects - key value pairs
-
-  const[loading, setLoading] = useState(true)
-
-  //Error handling 
-
-//step 2 - executing the main logic
+  const[count, setcount] = useState(11)
+  
+  //Bussiness logic
 
 useEffect(()=>{
-  fetchPosts()
-},[])  //only run on mount
 
-async function fetchPosts() {
+  //callback function - any operation you have to perform
 
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  /*console.log("Hello from Vscode")
+  console.log("Hello from Vscode2");
+   console.log("Hello from Vscode3");
+*/
+console.log("Re-render because count is changed " +count)
 
-  const data = await response.json();
+},[count])
 
-  setPosts(post);
-  setLoading(false)
-}
-//UI showcasing
-if(loading) return <p>Loading please wait...</p>
+//UI
 
-  //UI Part
   return (
     <div>
-      <h1>Data fetching in react - async await</h1>
-      
-      <h3>Title : {post[0]?.title}</h3>
-      <h3>Title : {post [1]?.title}</h3>
+      <h1>useEffect Hooks in ReactJS</h1>
+      <h3>heyy</h3>
+      <h2>Count : {count } </h2>
     </div>
   )
 }
 
-export default App
-
+export default App;
